@@ -1,115 +1,215 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('subscription-form');
-    const errorMessage = document.getElementById('error-message');
-    const submitBtn = document.getElementById('submit-btn');
-    const tryAgainBtn = document.getElementById('try-again-btn');
+    const paymentBtn = document.getElementById('payment-btn');
+    const errorPanel = document.getElementById('error-panel');
+    const retryBtn = document.getElementById('retry-btn');
     
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Показываем анимацию загрузки
-        submitBtn.innerHTML = '<span class="btn-text">ОБРАБОТКА ПЛАТЕЖА...</span><span class="btn-icon"><i class="fas fa-spinner fa-spin"></i></span>';
-        submitBtn.disabled = true;
+    // Обработчик нажатия на кнопку оплаты
+    paymentBtn.addEventListener('click', function() {
+        // Показываем состояние загрузки
+        const originalHTML = paymentBtn.innerHTML;
+        paymentBtn.innerHTML = `
+            <div class="tg-btn-content">
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>ОПЛАТА 411 114 ₽...</span>
+            </div>
+            <div class="tg-btn-sub">обработка платежа</div>
+        `;
+        paymentBtn.disabled = true;
         
         // Имитация обработки платежа
-        setTimeout(function() {
+        setTimeout(() => {
             // Всегда показываем ошибку 411
             showError();
+            
+            // Восстанавливаем кнопку
+            paymentBtn.innerHTML = originalHTML;
+            paymentBtn.disabled = false;
         }, 2000);
     });
     
-    tryAgainBtn.addEventListener('click', function() {
-        // Скрываем сообщение об ошибке
-        errorMessage.classList.add('hidden');
+    // Обработчик кнопки "Попробовать снова"
+    retryBtn.addEventListener('click', function() {
+        // Показываем загрузку на кнопке повторной попытки
+        const originalRetryHTML = retryBtn.innerHTML;
+        retryBtn.innerHTML = `
+            <i class="fas fa-spinner fa-spin"></i>
+            <span>Повторная попытка оплаты...</span>
+        `;
+        retryBtn.disabled = true;
         
-        // Восстанавливаем кнопку
-        submitBtn.innerHTML = '<span class="btn-text">ПОДПИСАТЬСЯ И СТАТЬ УСПЕШНЫМ</span><span class="btn-icon"><i class="fas fa-arrow-right"></i></span>';
-        submitBtn.disabled = false;
-        
-        // Очищаем форму
-        form.reset();
+        // Имитация повторной попытки
+        setTimeout(() => {
+            // Снова показываем ошибку (всегда)
+            errorPanel.classList.remove('hidden');
+            
+            // Восстанавливаем кнопку
+            retryBtn.innerHTML = originalRetryHTML;
+            retryBtn.disabled = false;
+            
+            // Добавляем анимацию ошибки
+            addErrorEffects();
+            
+            // Создаём новые плавающие числа
+            createFloatingNumbers();
+        }, 1500);
     });
     
+    // Функция показа ошибки
     function showError() {
-        // Показываем сообщение об ошибке
-        errorMessage.classList.remove('hidden');
+        // Показываем панель ошибки
+        errorPanel.classList.remove('hidden');
         
-        // Прокручиваем страницу к сообщению об ошибке
-        errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        // Добавляем эффекты
+        addErrorEffects();
         
-        // Добавляем дополнительный эффект - мигание заголовка ошибки
-        const errorHeader = document.querySelector('.error-header h3');
-        let blinkCount = 0;
-        const blinkInterval = setInterval(function() {
-            errorHeader.style.visibility = errorHeader.style.visibility === 'hidden' ? 'visible' : 'hidden';
-            blinkCount++;
-            
-            if (blinkCount > 6) {
-                clearInterval(blinkInterval);
-                errorHeader.style.visibility = 'visible';
-            }
-        }, 300);
+        // Создаём плавающие числа 411
+        createFloatingNumbers();
         
-        // Добавляем звуковой эффект (если нужно)
+        // Воспроизводим звук ошибки
         playErrorSound();
     }
     
-    function playErrorSound() {
-        // Создаем звуковой эффект ошибки с помощью Web Audio API
-        try {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            const gainNode = audioContext.createGain();
+    // Функция добавления эффектов ошибки
+    function addErrorEffects() {
+        // Анимация мигания заголовка ошибки
+        const errorHeader = document.querySelector('.tg-error-header h3');
+        errorHeader.style.animation = 'none';
+        setTimeout(() => {
+            errorHeader.style.animation = 'pulse 2s infinite';
+        }, 10);
+        
+        // Анимация дрожания панели ошибки
+        const errorPanel = document.querySelector('.tg-error-panel');
+        errorPanel.style.transform = 'translateX(0)';
+        
+        let shakeCount = 0;
+        const shakeInterval = setInterval(() => {
+            const offset = Math.sin(shakeCount * 2) * 4;
+            errorPanel.style.transform = `translateX(${offset}px)`;
+            shakeCount++;
             
-            oscillator.connect(gainNode);
-            gainNode.connect(audioContext.destination);
+            if (shakeCount > 16) {
+                clearInterval(shakeInterval);
+                errorPanel.style.transform = 'translateX(0)';
+            }
+        }, 50);
+    }
+    
+    // Функция создания плавающих чисел
+    function createFloatingNumbers() {
+        const numbers = ['411', '114', '411', '114', '411', '114'];
+        
+        for (let i = 0; i < 12; i++) {
+            const numberEl = document.createElement('div');
+            numberEl.className = 'floating-number';
+            numberEl.textContent = numbers[i % numbers.length];
             
-            oscillator.type = 'sawtooth';
-            oscillator.frequency.setValueAtTime(150, audioContext.currentTime);
-            oscillator.frequency.exponentialRampToValueAtTime(50, audioContext.currentTime + 0.5);
+            // Стили
+            numberEl.style.position = 'fixed';
+            numberEl.style.zIndex = '9999';
+            numberEl.style.pointerEvents = 'none';
+            numberEl.style.color = i % 2 === 0 ? 'rgba(255, 85, 0, 0.7)' : 'rgba(255, 51, 0, 0.7)';
+            numberEl.style.fontSize = `${Math.random() * 20 + 14}px`;
+            numberEl.style.fontWeight = '900';
+            numberEl.style.fontFamily = "'Inter', sans-serif";
+            numberEl.style.left = `${Math.random() * 100}vw`;
+            numberEl.style.top = `${Math.random() * 100}vh`;
+            numberEl.style.opacity = '0';
+            numberEl.style.transform = 'translateY(20px)';
             
-            gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            // Анимация
+            numberEl.style.transition = 'all 1s ease-out';
             
-            oscillator.start(audioContext.currentTime);
-            oscillator.stop(audioContext.currentTime + 0.5);
-        } catch (e) {
-            console.log("Аудио контекст не поддерживается");
+            document.body.appendChild(numberEl);
+            
+            // Запускаем анимацию
+            setTimeout(() => {
+                numberEl.style.opacity = '1';
+                numberEl.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Удаляем через 3 секунды
+            setTimeout(() => {
+                numberEl.style.opacity = '0';
+                numberEl.style.transform = 'translateY(-80px)';
+                
+                setTimeout(() => {
+                    if (numberEl.parentNode) {
+                        numberEl.parentNode.removeChild(numberEl);
+                    }
+                }, 1000);
+            }, 3000);
         }
     }
     
-    // Добавляем валидацию для поля с номером карты
-    const cardInput = document.getElementById('card');
-    cardInput.addEventListener('input', function() {
-        let value = this.value.replace(/\s/g, '').replace(/\D/g, '');
-        
-        // Форматируем как XXXX XXXX XXXX XXXX
-        let formatted = '';
-        for (let i = 0; i < value.length && i < 16; i++) {
-            if (i > 0 && i % 4 === 0) {
-                formatted += ' ';
-            }
-            formatted += value[i];
+    // Функция воспроизведения звука ошибки
+    function playErrorSound() {
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            
+            // Основной тон ошибки
+            const oscillator1 = audioContext.createOscillator();
+            const gainNode1 = audioContext.createGain();
+            
+            oscillator1.connect(gainNode1);
+            gainNode1.connect(audioContext.destination);
+            
+            oscillator1.type = 'square';
+            oscillator1.frequency.setValueAtTime(411, audioContext.currentTime);
+            oscillator1.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.4);
+            
+            gainNode1.gain.setValueAtTime(0.08, audioContext.currentTime);
+            gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+            
+            oscillator1.start(audioContext.currentTime);
+            oscillator1.stop(audioContext.currentTime + 0.4);
+            
+            // Второй тон
+            setTimeout(() => {
+                const oscillator2 = audioContext.createOscillator();
+                const gainNode2 = audioContext.createGain();
+                
+                oscillator2.connect(gainNode2);
+                gainNode2.connect(audioContext.destination);
+                
+                oscillator2.type = 'sawtooth';
+                oscillator2.frequency.setValueAtTime(114, audioContext.currentTime);
+                oscillator2.frequency.exponentialRampToValueAtTime(60, audioContext.currentTime + 0.3);
+                
+                gainNode2.gain.setValueAtTime(0.05, audioContext.currentTime);
+                gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+                
+                oscillator2.start(audioContext.currentTime);
+                oscillator2.stop(audioContext.currentTime + 0.3);
+            }, 150);
+            
+        } catch (e) {
+            console.log("Web Audio API не поддерживается");
         }
-        
-        this.value = formatted;
-    });
+    }
     
-    // Добавляем валидацию для поля срока действия
-    const expiryInput = document.getElementById('expiry');
-    expiryInput.addEventListener('input', function() {
-        let value = this.value.replace(/\D/g, '');
+    // Анимация чисел 411 в фоне при загрузке
+    setTimeout(() => {
+        createBackgroundNumbers();
+    }, 1000);
+    
+    function createBackgroundNumbers() {
+        const container = document.querySelector('.tg-background-animation');
         
-        if (value.length >= 2) {
-            this.value = value.substring(0, 2) + '/' + value.substring(2, 4);
-        } else {
-            this.value = value;
+        for (let i = 0; i < 5; i++) {
+            const number = document.createElement('div');
+            number.textContent = '411';
+            number.style.position = 'absolute';
+            number.style.color = 'rgba(255, 85, 0, 0.03)';
+            number.style.fontSize = `${Math.random() * 60 + 40}px`;
+            number.style.fontWeight = '900';
+            number.style.fontFamily = "'Inter', sans-serif";
+            number.style.left = `${Math.random() * 100}%`;
+            number.style.top = `${Math.random() * 100}%`;
+            number.style.opacity = '0.3';
+            number.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
+            
+            container.appendChild(number);
         }
-    });
-    
-    // Добавляем валидацию для поля CVV
-    const cvvInput = document.getElementById('cvv');
-    cvvInput.addEventListener('input', function() {
-        this.value = this.value.replace(/\D/g, '').substring(0, 3);
-    });
+    }
 });

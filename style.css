@@ -1,446 +1,645 @@
+/* Telegram стиль - чистый и минималистичный */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
     background-color: #0a0a0a;
-    color: #fff;
-    background-image: url('images/background.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+    color: #ffffff;
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
 }
 
-body::before {
-    content: '';
-    position: absolute;
+.tg-background-animation {
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 77, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(255, 41, 41, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 80%, rgba(255, 102, 0, 0.03) 0%, transparent 50%);
     z-index: -1;
 }
 
-.container {
-    max-width: 1200px;
+/* Telegram container */
+.telegram-container {
+    max-width: 480px;
     margin: 0 auto;
-    padding: 20px;
+    background-color: #0f0f0f;
+    min-height: 100vh;
+    position: relative;
+    border-left: 1px solid #222;
+    border-right: 1px solid #222;
 }
 
 /* Header */
-.header {
+.tg-header {
+    position: sticky;
+    top: 0;
+    background-color: #1a1a1a;
+    padding: 14px 16px;
+    border-bottom: 1px solid #222;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 0;
-    border-bottom: 2px solid #ff9900;
-    margin-bottom: 40px;
+    z-index: 100;
 }
 
-.logo {
+.tg-header-left {
     display: flex;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: #ff9900;
+    gap: 12px;
 }
 
-.logo i {
-    margin-right: 10px;
-    font-size: 2.2rem;
-}
-
-.tagline {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: #ccc;
-    text-align: right;
-}
-
-/* Main content */
-.main-title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 2.8rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #ff9900;
-    text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
-}
-
-.subtitle {
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 30px;
-    color: #fff;
-    line-height: 1.4;
-}
-
-.call-to-action {
-    background: linear-gradient(90deg, rgba(255,153,0,0.2) 0%, rgba(255,153,0,0.1) 100%);
-    padding: 25px;
-    border-radius: 10px;
-    margin: 30px 0;
-    border-left: 5px solid #ff9900;
-}
-
-.cta-text {
-    font-size: 1.4rem;
-    font-weight: 700;
-    text-align: center;
-    margin: 10px 0;
-    color: #ffcc80;
-}
-
-.success-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 40px 0;
-    flex-wrap: wrap;
-}
-
-.stat {
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(255, 153, 0, 0.1);
-    border-radius: 10px;
-    min-width: 200px;
-    margin: 10px;
-}
-
-.stat-number {
-    display: block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #ff9900;
-}
-
-.stat-label {
-    font-size: 0.9rem;
-    color: #ccc;
-}
-
-/* Subscription section */
-.subscription-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-@media (max-width: 900px) {
-    .subscription-section {
-        grid-template-columns: 1fr;
-    }
-    
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .tagline {
-        margin-top: 10px;
-        text-align: center;
-    }
-}
-
-.subscription-card {
-    background-color: rgba(30, 30, 30, 0.95);
-    border-radius: 15px;
-    overflow: hidden;
-    border: 2px solid #ff9900;
-    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.2);
-}
-
-.card-header {
-    background: linear-gradient(90deg, #ff9900 0%, #ff6600 100%);
-    padding: 25px;
-    text-align: center;
-}
-
-.card-header h3 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-}
-
-.price {
-    font-size: 3rem;
-    font-weight: 900;
-    margin-top: 10px;
-}
-
-.period {
-    font-size: 1.2rem;
-    font-weight: normal;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.card-body {
-    padding: 30px;
-}
-
-.benefits-list {
-    list-style: none;
-    margin-bottom: 30px;
-}
-
-.benefits-list li {
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-}
-
-.benefits-list li:last-child {
-    border-bottom: none;
-}
-
-.benefits-list i {
-    color: #4CAF50;
-    margin-right: 15px;
-    font-size: 1.2rem;
-}
-
-/* Form */
-.subscription-form {
-    margin-top: 30px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #ccc;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #555;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
-    font-size: 1rem;
-}
-
-.form-group input:focus {
-    outline: none;
-    border-color: #ff9900;
-    box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.submit-btn {
-    width: 100%;
-    padding: 20px;
-    background: linear-gradient(90deg, #ff9900 0%, #ff6600 100%);
-    border: none;
-    border-radius: 10px;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: 900;
+.tg-header-left i {
+    color: #ff5500;
+    font-size: 20px;
     cursor: pointer;
+}
+
+.tg-channel-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
-    transition: all 0.3s ease;
+    gap: 10px;
 }
 
-.submit-btn:hover {
-    background: linear-gradient(90deg, #ff6600 0%, #ff3300 100%);
-    transform: translateY(-3px);
-    box-shadow: 0 7px 15px rgba(255, 102, 0, 0.4);
-}
-
-.btn-icon {
-    background-color: rgba(255, 255, 255, 0.2);
-    padding: 10px;
+.tg-channel-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #ff5500, #ff3300);
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 16px;
+    color: white;
 }
 
-.secure-payment {
-    text-align: center;
-    margin-top: 15px;
-    color: #aaa;
-    font-size: 0.9rem;
+.tg-channel-details h3 {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 2px;
 }
 
-.secure-payment i {
-    margin-right: 5px;
-    color: #4CAF50;
+.tg-channel-details p {
+    font-size: 12px;
+    color: #888888;
 }
 
-.card-footer {
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    text-align: center;
-    border-top: 1px solid rgba(255, 153, 0, 0.3);
+.tg-header-right {
+    display: flex;
+    gap: 18px;
+    color: #888888;
+    font-size: 16px;
 }
 
-.card-footer i {
-    color: #ff9900;
-    margin-right: 10px;
+.tg-header-right i {
+    cursor: pointer;
 }
 
-/* Testimonials */
-.testimonials {
-    background-color: rgba(30, 30, 30, 0.95);
-    padding: 30px;
-    border-radius: 15px;
-    border: 2px solid #444;
+/* Content */
+.tg-content {
+    padding: 16px;
+    padding-bottom: 70px;
 }
 
-.testimonials h3 {
-    color: #ff9900;
-    margin-bottom: 25px;
-    font-size: 1.5rem;
+/* Messages */
+.tg-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-.testimonials h3 i {
-    margin-right: 10px;
+.tg-message {
+    animation: messageAppear 0.3s ease-out;
 }
 
-.testimonial {
-    background-color: rgba(255, 153, 0, 0.1);
-    padding: 20px;
-    border-radius: 10px;
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.channel-message {
+    background-color: rgba(255, 85, 0, 0.05);
+    border-radius: 14px;
+    border: 1px solid rgba(255, 85, 0, 0.15);
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tg-message-content {
+    margin-left: 4px;
+}
+
+.tg-message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 85, 0, 0.1);
+}
+
+.tg-sender {
+    font-weight: 700;
+    color: #ff5500;
+    font-size: 14px;
+}
+
+.tg-time {
+    font-size: 12px;
+    color: #666;
+}
+
+.tg-message-title {
+    font-size: 22px;
+    font-weight: 900;
+    color: #ff5500;
+    margin-bottom: 12px;
+    line-height: 1.2;
+}
+
+.tg-message-subtitle {
+    color: #e0e0e0;
+    font-size: 16px;
+    line-height: 1.4;
     margin-bottom: 20px;
-    border-left: 4px solid #ff9900;
 }
 
-.testimonial p {
-    font-style: italic;
-    margin-bottom: 10px;
-    line-height: 1.5;
+/* Price marquee */
+.tg-price-marquee {
+    background-color: rgba(20, 20, 20, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 16px 0;
+    border: 1px solid rgba(255, 85, 0, 0.3);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
 }
 
-.author {
-    color: #ffcc80;
+.tg-price-marquee::before {
+    content: '411';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+    font-weight: 900;
+    color: rgba(255, 85, 0, 0.03);
+    font-family: 'Inter', sans-serif;
+}
+
+.tg-price-main {
+    position: relative;
+    z-index: 1;
+}
+
+.tg-price-amount {
+    display: block;
+    font-size: 42px;
+    font-weight: 900;
+    color: #ff3300;
+    line-height: 1;
+    margin-bottom: 8px;
+    text-shadow: 0 0 15px rgba(255, 51, 0, 0.4);
+}
+
+.tg-price-label {
+    display: block;
+    font-size: 13px;
+    color: #ff7700;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.tg-price-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px;
+    background-color: rgba(255, 85, 0, 0.1);
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+.tg-price-note i {
+    color: #ff7700;
+}
+
+.tg-price-note span {
+    color: #ffaa66;
+}
+
+/* CTA */
+.tg-cta {
+    color: #ffaa66 !important;
+    font-weight: 700 !important;
+    font-size: 16px !important;
+    text-align: center;
+    margin: 12px 0 !important;
+    line-height: 1.4;
+}
+
+/* Stats */
+.tg-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 24px 0;
+    background-color: rgba(255, 85, 0, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.tg-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.tg-stat-number {
+    display: block;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ff5500;
+    margin-bottom: 4px;
+}
+
+.tg-stat-label {
+    display: block;
+    font-size: 11px;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Payment card */
+.tg-payment-card {
+    background-color: #1a1a1a;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 85, 0, 0.3);
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.tg-payment-header {
+    background: linear-gradient(90deg, #ff5500, #ff3300);
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.tg-payment-header i {
+    font-size: 18px;
+}
+
+.tg-payment-header h3 {
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.tg-payment-body {
+    padding: 20px;
+}
+
+/* Price display */
+.tg-price-display {
+    text-align: center;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 85, 0, 0.2);
+}
+
+.tg-price-large {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.tg-price-number {
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1;
+}
+
+.tg-price-currency {
+    font-size: 24px;
+    color: #ff5500;
+    font-weight: 700;
+}
+
+.tg-price-period {
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 0.5px;
+}
+
+/* Benefits grid */
+.tg-benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.tg-benefit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background-color: rgba(255, 85, 0, 0.08);
+    border-radius: 8px;
+    font-size: 13px;
+    color: #e0e0e0;
+}
+
+.tg-benefit i {
+    color: #ff5500;
+    font-size: 14px;
+}
+
+/* Payment button */
+.tg-payment-btn {
+    width: 100%;
+    background: linear-gradient(90deg, #ff5500, #ff3300);
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tg-payment-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 85, 0, 0.3);
+    background: linear-gradient(90deg, #ff6600, #ff4400);
+}
+
+.tg-payment-btn:active {
+    transform: translateY(0);
+}
+
+.tg-btn-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.tg-btn-sub {
+    font-size: 13px;
+    opacity: 0.9;
     font-weight: 500;
 }
 
-/* Error message */
-.error-message {
-    background-color: rgba(30, 0, 0, 0.95);
-    padding: 30px;
-    border-radius: 10px;
-    border: 2px solid #ff3333;
-    margin-top: 30px;
+.tg-payment-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #888;
+}
+
+.tg-payment-footer i {
+    color: #ff5500;
+    font-size: 13px;
+}
+
+/* Error panel */
+.tg-error-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    animation: errorAppear 0.4s ease-out;
+}
+
+@keyframes errorAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tg-error-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.tg-error-header i {
+    font-size: 60px;
+    color: #ff3300;
+    margin-bottom: 16px;
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-    0% { border-color: #ff3333; }
-    50% { border-color: #ff6666; }
-    100% { border-color: #ff3333; }
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
-.error-header {
+.tg-error-header h3 {
+    font-size: 28px;
+    color: #ff3300;
+    font-weight: 900;
+}
+
+.tg-error-body {
+    max-width: 380px;
+    width: 100%;
+    background-color: rgba(30, 0, 0, 0.9);
+    border-radius: 18px;
+    padding: 24px;
+    border: 2px solid #ff3300;
+    text-align: center;
+}
+
+.tg-error-code {
+    margin: 16px 0 24px;
+}
+
+.tg-error-number {
+    display: block;
+    font-size: 64px;
+    font-weight: 900;
+    color: #ff3300;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(255, 51, 0, 0.5);
+}
+
+.tg-error-text {
+    display: block;
+    font-size: 16px;
+    color: #ff6666;
+    margin-top: 8px;
+    font-weight: 600;
+}
+
+.tg-error-price {
+    margin: 20px 0;
+    padding: 16px;
+    background-color: rgba(255, 51, 0, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 51, 0, 0.3);
+}
+
+.tg-error-price-amount {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ff3300;
+    margin-bottom: 4px;
+}
+
+.tg-error-price-label {
+    display: block;
+    font-size: 14px;
+    color: #ff8888;
+}
+
+.tg-error-message {
+    color: #ff9999;
+    margin: 16px 0;
+    line-height: 1.5;
+    font-size: 15px;
+}
+
+.tg-error-sub {
+    color: #ffaaaa;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.tg-error-hint {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
-    color: #ff3333;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgba(255, 51, 0, 0.1);
+    border-radius: 10px;
+    padding: 14px;
+    margin: 20px 0;
+    color: #ffaa66;
+    font-size: 13px;
 }
 
-.error-header i {
-    font-size: 2.5rem;
-    margin-right: 15px;
+.tg-error-hint i {
+    color: #ffaa66;
 }
 
-.error-header h3 {
-    font-size: 1.8rem;
-}
-
-.error-message p {
-    margin-bottom: 15px;
-    line-height: 1.5;
-}
-
-.try-again-btn {
-    background-color: #ff3333;
-    color: white;
+.tg-retry-btn {
+    width: 100%;
+    background-color: #ff3300;
     border: none;
-    padding: 15px 30px;
-    border-radius: 8px;
-    font-weight: bold;
+    border-radius: 12px;
+    padding: 18px;
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
     transition: background-color 0.3s;
 }
 
-.try-again-btn:hover {
-    background-color: #ff6666;
+.tg-retry-btn:hover {
+    background-color: #ff5500;
 }
 
+/* Bottom bar */
+.tg-bottom-bar {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    background-color: #1a1a1a;
+    border-top: 1px solid #222;
+    padding: 14px 16px;
+}
+
+.tg-bottom-notice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #ff5500;
+    font-weight: 600;
+}
+
+.tg-bottom-notice i {
+    font-size: 14px;
+}
+
+/* Utility */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
-/* Footer */
-.footer {
-    margin-top: 50px;
-    padding: 30px 0;
-    border-top: 1px solid #444;
-    text-align: center;
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
-.disclaimer {
-    margin-top: 10px;
-    font-size: 0.8rem;
-    color: #777;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .main-title {
-        font-size: 2rem;
+/* Responsive */
+@media (max-width: 500px) {
+    .telegram-container {
+        border: none;
     }
     
-    .subtitle {
-        font-size: 1.2rem;
+    .tg-price-amount, .tg-price-number {
+        font-size: 36px;
     }
     
-    .cta-text {
-        font-size: 1.1rem;
+    .tg-error-number {
+        font-size: 56px;
     }
     
-    .price {
-        font-size: 2.5rem;
-    }
-    
-    .form-row {
+    .tg-benefits-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .success-stats {
-        flex-direction: column;
-        align-items: center;
     }
 }
