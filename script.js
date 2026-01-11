@@ -1,43 +1,50 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Скрипт загружен!'); // Для отладки
-    
     const paymentBtn = document.getElementById('payment-btn');
     const retryBtn = document.getElementById('retry-btn');
+    const errorPanel = document.getElementById('error-panel');
     
-    if (paymentBtn) {
-        console.log('Кнопка найдена'); // Для отладки
+    // Обработчик для кнопки оплаты
+    paymentBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         
-        paymentBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('Кнопка нажата, перенаправление...'); // Для отладки
+        // Показать анимацию нажатия
+        paymentBtn.style.transform = 'scale(0.95)';
+        paymentBtn.style.opacity = '0.8';
+        
+        // Показать ошибку через 1 секунду
+        setTimeout(function() {
+            errorPanel.classList.remove('hidden');
             
-            // Показываем состояние загрузки
-            const originalHTML = paymentBtn.innerHTML;
-            paymentBtn.innerHTML = `
-                <div class="tg-btn-content">
-                    <i class="fas fa-spinner fa-spin"></i>
-                    <span>ПЕРЕНАПРАВЛЕНИЕ...</span>
-                </div>
-                <div class="tg-btn-sub">идёт переход на Википедию</div>
-            `;
-            paymentBtn.disabled = true;
-            
-            // Перенаправляем через небольшую задержку
-            setTimeout(() => {
-                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-                // Альтернатива: window.open("https://ru.wikipedia.org/wiki/HTTP_411", "_blank");
-            }, 500);
-        });
-    } else {
-        console.error('Кнопка payment-btn не найдена!'); // Для отладки
-    }
+            // Восстановить кнопку
+            setTimeout(function() {
+                paymentBtn.style.transform = '';
+                paymentBtn.style.opacity = '';
+            }, 300);
+        }, 1000);
+    });
     
+    // Если есть кнопка "Попробовать снова"
     if (retryBtn) {
         retryBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+            
+            // Анимация нажатия
+            retryBtn.style.transform = 'scale(0.95)';
+            
+            // Скрыть ошибку
+            errorPanel.classList.add('hidden');
+            
+            // Восстановить кнопку
+            setTimeout(function() {
+                retryBtn.style.transform = '';
+            }, 300);
         });
     }
+    
+    // Закрытие панели ошибки при клике вне ее
+    errorPanel.addEventListener('click', function(e) {
+        if (e.target === errorPanel) {
+            errorPanel.classList.add('hidden');
+        }
+    });
 });
