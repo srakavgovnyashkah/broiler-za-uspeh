@@ -187,29 +187,4 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("Web Audio API не поддерживается");
         }
     }
-    
-    // Анимация чисел 411 в фоне при загрузке
-    setTimeout(() => {
-        createBackgroundNumbers();
-    }, 1000);
-    
-    function createBackgroundNumbers() {
-        const container = document.querySelector('.tg-background-animation');
-        
-        for (let i = 0; i < 5; i++) {
-            const number = document.createElement('div');
-            number.textContent = '411';
-            number.style.position = 'absolute';
-            number.style.color = 'rgba(255, 85, 0, 0.03)';
-            number.style.fontSize = `${Math.random() * 60 + 40}px`;
-            number.style.fontWeight = '900';
-            number.style.fontFamily = "'Inter', sans-serif";
-            number.style.left = `${Math.random() * 100}%`;
-            number.style.top = `${Math.random() * 100}%`;
-            number.style.opacity = '0.3';
-            number.style.transform = `rotate(${Math.random() * 30 - 15}deg)`;
-            
-            container.appendChild(number);
-        }
-    }
 });
