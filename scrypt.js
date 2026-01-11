@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Перенаправляем на Wikipedia через 1 секунду
             setTimeout(() => {
-                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+                window.location.href = "https://55311wqetqo.com";
             }, 1000);
         });
     }
