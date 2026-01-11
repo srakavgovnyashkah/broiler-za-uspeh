@@ -1,50 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const paymentBtn = document.getElementById('payment-btn');
-    const retryBtn = document.getElementById('retry-btn');
-    const errorPanel = document.getElementById('error-panel');
+    // Все ссылки на странице будут работать стандартно
+    // Кнопка оплаты уже содержит прямую ссылку
     
-    // Обработчик для кнопки оплаты
-    paymentBtn.addEventListener('click', function(e) {
-        e.preventDefault();
+    // Можно добавить небольшую анимацию при загрузке
+    const elements = document.querySelectorAll('.feature, .payment-card, .price-badge');
+    
+    elements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
         
-        // Показать анимацию нажатия
-        paymentBtn.style.transform = 'scale(0.95)';
-        paymentBtn.style.opacity = '0.8';
-        
-        // Показать ошибку через 1 секунду
-        setTimeout(function() {
-            errorPanel.classList.remove('hidden');
-            
-            // Восстановить кнопку
-            setTimeout(function() {
-                paymentBtn.style.transform = '';
-                paymentBtn.style.opacity = '';
-            }, 300);
-        }, 1000);
-    });
-    
-    // Если есть кнопка "Попробовать снова"
-    if (retryBtn) {
-        retryBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Анимация нажатия
-            retryBtn.style.transform = 'scale(0.95)';
-            
-            // Скрыть ошибку
-            errorPanel.classList.add('hidden');
-            
-            // Восстановить кнопку
-            setTimeout(function() {
-                retryBtn.style.transform = '';
-            }, 300);
-        });
-    }
-    
-    // Закрытие панели ошибки при клике вне ее
-    errorPanel.addEventListener('click', function(e) {
-        if (e.target === errorPanel) {
-            errorPanel.classList.add('hidden');
-        }
+        setTimeout(() => {
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        }, index * 100);
     });
 });
