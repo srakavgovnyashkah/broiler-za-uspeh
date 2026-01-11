@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Перенаправляем через небольшую задержку
             setTimeout(() => {
-                window.location.href = "https://ytey3yw3gws.org
-                ";
+                window.location.href = "https://httpstat.us/411"
+                 ;
                 // Альтернатива: window.open("https://ru.wikipedia.org/wiki/HTTP_411", "_blank");
             }, 500);
         });
