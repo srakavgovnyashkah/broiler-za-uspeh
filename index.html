@@ -3,129 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>БРОЙЛЕР ЗА УСПЕХ - Подписка на приватный канал</title>
+    <title>БРОЙЛЕР ЗА УСПЕХ | Приватный Telegram-канал</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-fire"></i>
-                <span>БРОЙЛЕР ЗА УСПЕХ</span>
-            </div>
-            <div class="tagline">ПУТЬ К МИЛЛИАРДАМ НАЧИНАЕТСЯ ЗДЕСЬ</div>
-        </header>
-
-        <main class="main-content">
-            <div class="hero-section">
-                <h1 class="main-title">ВЫ МЕЧТАЛИ БЫТЬ УСПЕШНЫМИ?</h1>
-                <h2 class="subtitle">ВЫ ХОТИТЕ ЗАРАБОТАТЬ МИЛЛИАРДЫ ДЕНЕГ И НАУЧИТЬСЯ МОЕЙ МУДРОСТИ?</h2>
-                
-                <div class="call-to-action">
-                    <p class="cta-text">ТОГДА ЧЕГО ТЫ ЖДЕШЬ? ЭТОТ КАНАЛ ДЛЯ ВАС!</p>
-                    <p class="cta-text">ПОДПИШИСЬ! ТЫ ХОЧЕШЬ СТАТЬ УСПЕШНЫМ?</p>
+    <!-- Фоновое изображение -->
+    <div class="background-image"></div>
+    
+    <div class="telegram-container">
+        <!-- Telegram-подобный header -->
+        <div class="tg-header">
+            <div class="tg-channel-info">
+                <div class="tg-channel-avatar">
+                    <i class="fas fa-fire"></i>
                 </div>
-                
-                <div class="success-stats">
-                    <div class="stat">
-                        <span class="stat-number">10,000+</span>
-                        <span class="stat-label">УСПЕШНЫХ УЧЕНИКОВ</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">$2.1B+</span>
-                        <span class="stat-label">ЗАРАБОТАНО УЧЕНИКАМИ</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">24/7</span>
-                        <span class="stat-label">ПОДДЕРЖКА УСПЕХА</span>
-                    </div>
+                <div class="tg-channel-details">
+                    <h3>БРОЙЛЕР ЗА УСПЕХ</h3>
+                    <p>приватный канал • 41.1k подписчиков</p>
                 </div>
             </div>
+        </div>
 
-            <div class="subscription-section">
-                <div class="subscription-card">
-                    <div class="card-header">
-                        <h3><i class="fas fa-crown"></i> ПРИВАТНЫЙ ДОСТУП</h3>
-                        <p class="price">999 ₽ <span class="period">/ месяц</span></p>
-                    </div>
-                    
-                    <div class="card-body">
-                        <ul class="benefits-list">
-                            <li><i class="fas fa-check-circle"></i> Эксклюзивные материалы по заработку</li>
-                            <li><i class="fas fa-check-circle"></i> Персональные консультации</li>
-                            <li><i class="fas fa-check-circle"></i> Доступ к закрытому Telegram-каналу</li>
-                            <li><i class="fas fa-check-circle"></i> Секретные стратегии успеха</li>
-                            <li><i class="fas fa-check-circle"></i> Ежедневные мотивационные посты</li>
-                        </ul>
-                        
-                        <form id="subscription-form" class="subscription-form">
-                            <div class="form-group">
-                                <label for="email">Ваш Email:</label>
-                                <input type="email" id="email" placeholder="vash_email@example.com" required>
-                            </div>
+        <!-- Контент канала -->
+        <div class="tg-content">
+            <!-- Сообщения канала -->
+            <div class="tg-messages">
+                <!-- Первое сообщение -->
+                <div class="tg-message channel-message">
+                    <div class="tg-message-content">
+                        <div class="tg-message-header">
+                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
+                            <span class="tg-time">сегодня в 11:41</span>
+                        </div>
+                        <div class="tg-message-text">
+                            <h2 class="tg-message-title">ВЫ МЕЧТАЛИ БЫТЬ УСПЕШНЫМИ?</h2>
+                            <p class="tg-message-subtitle">ВЫ ХОТИТЕ ЗАРАБОТАТЬ МИЛЛИАРДЫ ДЕНЕГ И НАУЧИТЬСЯ МОЕЙ МУДРОСТИ?</p>
                             
-                            <div class="form-group">
-                                <label for="card">Номер карты:</label>
-                                <input type="text" id="card" placeholder="0000 0000 0000 0000" required>
+                            <div class="tg-price-display-large">
+                                <span class="tg-price-amount-large">411 114 ₽</span>
+                                <span class="tg-price-label-large">СТОИМОСТЬ УСПЕХА</span>
                             </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="expiry">Срок действия:</label>
-                                    <input type="text" id="expiry" placeholder="MM/ГГ" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="cvv">CVV:</label>
-                                    <input type="text" id="cvv" placeholder="123" required>
-                                </div>
-                            </div>
-                            
-                            <button type="submit" id="submit-btn" class="submit-btn">
-                                <span class="btn-text">ПОДПИСАТЬСЯ И СТАТЬ УСПЕШНЫМ</span>
-                                <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
-                            </button>
-                            
-                            <p class="secure-payment">
-                                <i class="fas fa-lock"></i> Безопасная оплата. Ваши данные защищены.
-                            </p>
-                        </form>
-                        
-                        <div id="error-message" class="error-message hidden">
-                            <div class="error-header">
-                                <i class="fas fa-exclamation-triangle"></i>
-                                <h3>ОШИБКА 411: ПЕРЕГРУЗКА СЕРВЕРА</h3>
-                            </div>
-                            <p>Сервер не может обработать ваш запрос из-за чрезмерной нагрузки. Слишком много желающих стать успешными!</p>
-                            <p>Пожалуйста, попробуйте еще раз через несколько минут.</p>
-                            <button id="try-again-btn" class="try-again-btn">Попробовать снова</button>
                         </div>
                     </div>
-                    
-                    <div class="card-footer">
-                        <p><i class="fas fa-shield-alt"></i> 100% гарантия успеха или возврат средств</p>
+                </div>
+
+                <!-- Второе сообщение -->
+                <div class="tg-message channel-message">
+                    <div class="tg-message-content">
+                        <div class="tg-message-header">
+                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
+                            <span class="tg-time">сегодня в 11:42</span>
+                        </div>
+                        <div class="tg-message-text">
+                            <p class="tg-cta">ТОГДА ЧЕГО ТЫ ЖДЕШЬ? ЭТОТ КАНАЛ ДЛЯ ВАС!</p>
+                            <p class="tg-cta">ПОДПИШИСЬ! ТЫ ХОЧЕШЬ СТАТЬ УСПЕШНЫМ?</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="testimonials">
-                    <h3><i class="fas fa-comment-alt"></i> ОТЗЫВЫ УСПЕШНЫХ ЛЮДЕЙ:</h3>
-                    <div class="testimonial">
-                        <p>"После подписки на канал мой доход вырос в 100 раз! Спасибо, Бройлер!"</p>
-                        <span class="author">- Иван, бывший офисный работник</span>
-                    </div>
-                    <div class="testimonial">
-                        <p>"Я купил 5-й особняк благодаря стратегиям из этого канала. Это невероятно!"</p>
-                        <span class="author">- Ольга, предприниматель</span>
+
+                <!-- Сообщение с кнопкой оплаты -->
+                <div class="tg-message channel-message">
+                    <div class="tg-message-content">
+                        <div class="tg-message-header">
+                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
+                            <span class="tg-time">только что</span>
+                        </div>
+                        <div class="tg-message-text">
+                            <div class="tg-payment-card">
+                                <div class="tg-payment-header">
+                                    <i class="fas fa-lock"></i>
+                                    <h3>ПРИВАТНЫЙ ДОСТУП</h3>
+                                </div>
+                                
+                                <div class="tg-payment-body">
+                                    <div class="tg-price-display">
+                                        <div class="tg-price-large">
+                                            <span class="tg-price-number">411 114</span>
+                                            <span class="tg-price-currency">₽</span>
+                                        </div>
+                                        <div class="tg-price-period">единоразовый платёж</div>
+                                    </div>
+                                    
+                                    <button id="payment-btn" class="tg-payment-btn">
+                                        <div class="tg-btn-content">
+                                            <i class="fas fa-bolt"></i>
+                                            <span>ОПЛАТИТЬ 411 114 ₽</span>
+                                        </div>
+                                        <div class="tg-btn-sub">получить доступ к успеху</div>
+                                    </button>
+                                    
+                                    <div class="tg-payment-footer">
+                                        <i class="fas fa-info-circle"></i>
+                                        <span>После оплаты вы получите приглашение в канал</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </main>
-        
-        <footer class="footer">
-            <p>© 2023 БРОЙЛЕР ЗА УСПЕХ. Все права защищены. Успех не ждет, действуй!</p>
-            <p class="disclaimer">Этот сайт не является финансовым советом. Успех зависит только от вас.</p>
-        </footer>
+
+            <!-- Панель ошибки (скрыта изначально) -->
+            <div id="error-panel" class="tg-error-panel hidden">
+                <div class="tg-error-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>ОШИБКА 411</h3>
+                </div>
+                <div class="tg-error-body">
+                    <div class="tg-error-code">
+                        <span class="tg-error-number">411</span>
+                        <span class="tg-error-text">Length Required</span>
+                    </div>
+                    <div class="tg-error-price">
+                        <span class="tg-error-price-amount">411 114 ₽</span>
+                        <span class="tg-error-price-label">не принято</span>
+                    </div>
+                    <p class="tg-error-message">Сервер не может принять ваш платёж. Ошибка обработки транзакции.</p>
+                    <p class="tg-error-sub">Попробуйте оплатить позже или проверьте наличие 411 114 ₽ на счету.</p>
+                    
+                    <button id="retry-btn" class="tg-retry-btn">
+                        <i class="fas fa-redo"></i>
+                        <span>Попробовать оплатить снова</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Нижняя панель -->
+        <div class="tg-bottom-bar">
+            <div class="tg-bottom-notice">
+                <i class="fas fa-lock"></i>
+                <span>Для доступа требуется оплата 411 114 ₽</span>
+            </div>
+        </div>
     </div>
     
     <script src="script.js"></script>
