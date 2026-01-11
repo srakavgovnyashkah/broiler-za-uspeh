@@ -3,143 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>БРОЙЛЕР ЗА УСПЕХ | Приватный Telegram-канал</title>
+    <title>БРОЙЛЕР ЗА УСПЕХ - Приватный канал успеха</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Фоновое изображение -->
-    <div class="background-image"></div>
+    <div class="container">
     
-    <div class="telegram-container">
-        <!-- Telegram-подобный header -->
-        <div class="tg-header">
-            <div class="tg-channel-info">
-                <div class="tg-channel-avatar">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="tg-channel-details">
-                    <h3>БРОЙЛЕР ЗА УСПЕХ</h3>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">ВЫ МЕЧТАЛИ БЫТЬ УСПЕШНЫМИ?</h1>
+                <p class="hero-subtitle">ВЫ ХОТИТЕ ЗАРАБОТАТЬ МИЛЛИАРДЫ ДЕНЕГ И НАУЧИТЬСЯ МОЕЙ МУДРОСТИ?</p>
+                
+                <div class="price-badge">
+                    <span class="price-amount">411 114 ₽</span>
+                    <span class="price-label">СТОИМОСТЬ УСПЕХА</span>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Контент канала -->
-        <div class="tg-content">
-            <!-- Сообщения канала -->
-            <div class="tg-messages">
-                <!-- Первое сообщение -->
-                <div class="tg-message channel-message">
-                    <div class="tg-message-content">
-                        <div class="tg-message-header">
-                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
-                            <span class="tg-time">сегодня в 11:41</span>
-                        </div>
-                        <div class="tg-message-text">
-                            <h2 class="tg-message-title">ВЫ МЕЧТАЛИ БЫТЬ УСПЕШНЫМИ?</h2>
-                            <p class="tg-message-subtitle">ВЫ ХОТИТЕ ЗАРАБОТАТЬ МИЛЛИАРДЫ ДЕНЕГ И НАУЧИТЬСЯ МОЕЙ МУДРОСТИ?</p>
-                            
-                            <div class="tg-price-display-large">
-                                <span class="tg-price-amount-large">411 114 ₽</span>
-                                <span class="tg-price-label-large">СТОИМОСТЬ УСПЕХА</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Второе сообщение -->
-                <div class="tg-message channel-message">
-                    <div class="tg-message-content">
-                        <div class="tg-message-header">
-                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
-                            <span class="tg-time">сегодня в 11:42</span>
-                        </div>
-                        <div class="tg-message-text">
-                            <p class="tg-cta">ТОГДА ЧЕГО ТЫ ЖДЕШЬ? ЭТОТ КАНАЛ ДЛЯ ВАС!</p>
-                            <p class="tg-cta">ПОДПИШИСЬ! ТЫ ХОЧЕШЬ СТАТЬ УСПЕШНЫМ?</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Сообщение с кнопкой оплаты -->
-                <div class="tg-message channel-message">
-                    <div class="tg-message-content">
-                        <div class="tg-message-header">
-                            <span class="tg-sender">БРОЙЛЕР ЗА УСПЕХ</span>
-                            <span class="tg-time">только что</span>
-                        </div>
-                        <div class="tg-message-text">
-                            <div class="tg-payment-card">
-                                <div class="tg-payment-header">
-                                    <i class="fas fa-lock"></i>
-                                    <h3>ПРИВАТНЫЙ ДОСТУП</h3>
-                                </div>
-                                
-                                <div class="tg-payment-body">
-                                    <div class="tg-price-display">
-                                        <div class="tg-price-large">
-                                            <span class="tg-price-number">411 114</span>
-                                            <span class="tg-price-currency">₽</span>
-                                        </div>
-                                        
-                                    </div>
-                                    
-                                    <button id="payment-btn" class="tg-payment-btn">
-                                        <div class="tg-btn-content">
-                                            <i class="fas fa-bolt"></i>
-                                            <span>ОПЛАТИТЬ 411 114 ₽</span>
-                                        </div>
-                                        <div class="tg-btn-sub">получить доступ к успеху</div>
-                                    </button>
-                                    
-                                    <div class="tg-payment-footer">
-                                        <i class="fas fa-info-circle"></i>
-                                        <span>После оплаты вы получите приглашение в канал</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">ТОГДА ЧЕГО ТЫ ЖДЕШЬ? ЭТОТ КАНАЛ ДЛЯ ВАС!</h2>
+                <p class="cta-text">ПОДПИШИСЬ! ТЫ ХОЧЕШЬ СТАТЬ УСПЕШНЫМ?</p>
             </div>
+        </section>
 
-            <!-- Панель ошибки (скрыта изначально) -->
-            <div id="error-panel" class="tg-error-panel hidden">
-                <div class="tg-error-header">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <h3>ОШИБКА 411</h3>
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature">
+                <i class="fas fa-crown"></i>
+                <h3>ЭКСКЛЮЗИВНЫЙ КОНТЕНТ</h3>
+                <p>Доступ к закрытым материалам по успеху и богатству</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-gem"></i>
+                <h3>ПРИВАТНЫЙ КАНАЛ</h3>
+                <p>Только для избранных, кто готов инвестировать в себя</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-rocket"></i>
+                <h3>СКОРОСТНОЙ РОСТ</h3>
+                <p>Стратегии быстрого достижения финансовых целей</p>
+            </div>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <div class="payment-card">
+                <div class="payment-header">
+                    <i class="fas fa-lock"></i>
+                    <h2>ПРИВАТНЫЙ ДОСТУП</h2>
                 </div>
-                <div class="tg-error-body">
-                    <div class="tg-error-code">
-                        <span class="tg-error-number">411</span>
-                        <span class="tg-error-text">Length Required</span>
+                
+                <div class="payment-body">
+                    <div class="payment-price">
+                        <div class="main-price">
+                            <span class="price-number">411 114</span>
+                            <span class="price-currency">₽</span>
+                        </div>
+                        <p class="price-period">единоразовый платёж</p>
                     </div>
-                    <div class="tg-error-price">
-                        <span class="tg-error-price-amount">411 114 ₽</span>
-                        <span class="tg-error-price-label">не принято</span>
-                    </div>
-                    <p class="tg-error-message">Сервер не может принять ваш платёж. Ошибка обработки транзакции.</p>
-                    <p class="tg-error-sub">Попробуйте оплатить позже или проверьте наличие 411 114 ₽ на счету.</p>
                     
-                    <button id="retry-btn" class="tg-retry-btn">
-                        <i class="fas fa-redo"></i>
-                        <span>Попробовать оплатить снова</span>
-                    </button>
+                    <div class="payment-benefits">
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Полный доступ к каналу</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Пожизненная подписка</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Закрытые материалы</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Поддержка 24/7</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://httpstat.us/411" class="payment-button" id="payment-btn">
+                        <div class="button-content">
+                            <i class="fas fa-bolt"></i>
+                            <span>ОПЛАТИТЬ 411 114 ₽</span>
+                        </div>
+                        <div class="button-sub">получить доступ к успеху</div>
+                    </a>
+                    
+                 
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Нижняя панель -->
-        <div class="tg-bottom-bar">
-            <div class="tg-bottom-notice">
-                <i class="fas fa-lock"></i>
-                <span>Для доступа требуется оплата 411 114 ₽</span>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-fire"></i>
+                    <span>БРОЙЛЕР ЗА УСПЕХ</span>
+                </div>
+                <p class="footer-text">© 2026 Приватный канал успеха. Все права защищены.</p>
+                <div class="footer-notice">
+                    <i class="fas fa-lock"></i>
+                    <span>Для доступа требуется оплата 411 114 ₽</span>
+                </div>
             </div>
-        </div>
+        </footer>
     </div>
-    
+
     <script src="script.js"></script>
 </body>
 </html>
-
