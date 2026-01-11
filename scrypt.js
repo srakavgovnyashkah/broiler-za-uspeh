@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const paymentBtn = document.getElementById('payment-btn');
-    const errorPanel = document.getElementById('error-panel');
     const retryBtn = document.getElementById('retry-btn');
     
     // Флаг для отслеживания перенаправления
@@ -21,188 +20,37 @@ document.addEventListener('DOMContentLoaded', function() {
                 <i class="fas fa-spinner fa-spin"></i>
                 <span>ОПЛАТА 411 114 ₽...</span>
             </div>
-            <div class="tg-btn-sub">обработка платежа</div>
+            <div class="tg-btn-sub">перенаправление на Википедию</div>
         `;
         paymentBtn.disabled = true;
         
-        // Сначала показываем ошибку 411
+        // Перенаправляем на Wikipedia через 1 секунду (для эффекта загрузки)
         setTimeout(() => {
-            // Показываем панель ошибки
-            errorPanel.classList.remove('hidden');
-            
-            // Восстанавливаем кнопку
-            paymentBtn.innerHTML = originalHTML;
-            paymentBtn.disabled = false;
-            
-            // Добавляем эффекты ошибки
-            addErrorEffects();
-            createFloatingNumbers();
-            playErrorSound();
-            
-            // Через 3 секунды после показа ошибки - перенаправляем на Wikipedia
-            setTimeout(() => {
-                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-            }, 3000);
-            
-            isRedirecting = false;
-        }, 2000);
+            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+        }, 1000);
     });
     
-    // Обработчик кнопки "Попробовать снова"
-    retryBtn.addEventListener('click', function(e) {
-        e.preventDefault(); // Предотвращаем стандартное поведение
-        
-        if (isRedirecting) return;
-        
-        isRedirecting = true;
-        
-        // Показываем загрузку на кнопке повторной попытки
-        const originalRetryHTML = retryBtn.innerHTML;
-        retryBtn.innerHTML = `
-            <i class="fas fa-spinner fa-spin"></i>
-            <span>Повторная попытка оплаты...</span>
-        `;
-        retryBtn.disabled = true;
-        
-        // Имитация повторной попытки
-        setTimeout(() => {
-            // Снова показываем ошибку
-            errorPanel.classList.remove('hidden');
+    // Обработчик кнопки "Попробовать снова" (если она все еще есть на странице)
+    if (retryBtn) {
+        retryBtn.addEventListener('click', function(e) {
+            e.preventDefault(); // Предотвращаем стандартное поведение
             
-            // Восстанавливаем кнопку
-            retryBtn.innerHTML = originalRetryHTML;
-            retryBtn.disabled = false;
+            if (isRedirecting) return;
             
-            // Добавляем анимацию ошибки
-            addErrorEffects();
-            createFloatingNumbers();
-            playErrorSound();
+            isRedirecting = true;
             
-            // Через 3 секунды - перенаправляем
+            // Показываем загрузку на кнопке повторной попытки
+            const originalRetryHTML = retryBtn.innerHTML;
+            retryBtn.innerHTML = `
+                <i class="fas fa-spinner fa-spin"></i>
+                <span>Перенаправление...</span>
+            `;
+            retryBtn.disabled = true;
+            
+            // Перенаправляем на Wikipedia через 1 секунду
             setTimeout(() => {
                 window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-            }, 3000);
-            
-            isRedirecting = false;
-        }, 1500);
-    });
-    
-    // Функция добавления эффектов ошибки
-    function addErrorEffects() {
-        // Анимация мигания заголовка ошибки
-        const errorHeader = document.querySelector('.tg-error-header h3');
-        errorHeader.style.animation = 'none';
-        setTimeout(() => {
-            errorHeader.style.animation = 'pulse 2s infinite';
-        }, 10);
-        
-        // Анимация дрожания панели ошибки
-        const errorPanel = document.querySelector('.tg-error-panel');
-        errorPanel.style.transform = 'translateX(0)';
-        
-        let shakeCount = 0;
-        const shakeInterval = setInterval(() => {
-            const offset = Math.sin(shakeCount * 2) * 4;
-            errorPanel.style.transform = `translateX(${offset}px)`;
-            shakeCount++;
-            
-            if (shakeCount > 16) {
-                clearInterval(shakeInterval);
-                errorPanel.style.transform = 'translateX(0)';
-            }
-        }, 50);
-    }
-    
-    // Функция создания плавающих чисел
-    function createFloatingNumbers() {
-        const numbers = ['411', '114', '411', '114', '411', '114'];
-        
-        for (let i = 0; i < 12; i++) {
-            const numberEl = document.createElement('div');
-            numberEl.className = 'floating-number';
-            numberEl.textContent = numbers[i % numbers.length];
-            
-            // Стили
-            numberEl.style.position = 'fixed';
-            numberEl.style.zIndex = '9999';
-            numberEl.style.pointerEvents = 'none';
-            numberEl.style.color = i % 2 === 0 ? 'rgba(255, 85, 0, 0.7)' : 'rgba(255, 51, 0, 0.7)';
-            numberEl.style.fontSize = `${Math.random() * 20 + 14}px`;
-            numberEl.style.fontWeight = '900';
-            numberEl.style.fontFamily = "'Inter', sans-serif";
-            numberEl.style.left = `${Math.random() * 100}vw`;
-            numberEl.style.top = `${Math.random() * 100}vh`;
-            numberEl.style.opacity = '0';
-            numberEl.style.transform = 'translateY(20px)';
-            
-            // Анимация
-            numberEl.style.transition = 'all 1s ease-out';
-            
-            document.body.appendChild(numberEl);
-            
-            // Запускаем анимацию
-            setTimeout(() => {
-                numberEl.style.opacity = '1';
-                numberEl.style.transform = 'translateY(0)';
-            }, 10);
-            
-            // Удаляем через 3 секунды
-            setTimeout(() => {
-                numberEl.style.opacity = '0';
-                numberEl.style.transform = 'translateY(-80px)';
-                
-                setTimeout(() => {
-                    if (numberEl.parentNode) {
-                        numberEl.parentNode.removeChild(numberEl);
-                    }
-                }, 1000);
-            }, 3000);
-        }
-    }
-    
-    // Функция воспроизведения звука ошибки
-    function playErrorSound() {
-        try {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            
-            // Основной тон ошибки
-            const oscillator1 = audioContext.createOscillator();
-            const gainNode1 = audioContext.createGain();
-            
-            oscillator1.connect(gainNode1);
-            gainNode1.connect(audioContext.destination);
-            
-            oscillator1.type = 'square';
-            oscillator1.frequency.setValueAtTime(411, audioContext.currentTime);
-            oscillator1.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.4);
-            
-            gainNode1.gain.setValueAtTime(0.08, audioContext.currentTime);
-            gainNode1.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
-            
-            oscillator1.start(audioContext.currentTime);
-            oscillator1.stop(audioContext.currentTime + 0.4);
-            
-            // Второй тон
-            setTimeout(() => {
-                const oscillator2 = audioContext.createOscillator();
-                const gainNode2 = audioContext.createGain();
-                
-                oscillator2.connect(gainNode2);
-                gainNode2.connect(audioContext.destination);
-                
-                oscillator2.type = 'sawtooth';
-                oscillator2.frequency.setValueAtTime(114, audioContext.currentTime);
-                oscillator2.frequency.exponentialRampToValueAtTime(60, audioContext.currentTime + 0.3);
-                
-                gainNode2.gain.setValueAtTime(0.05, audioContext.currentTime);
-                gainNode2.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
-                
-                oscillator2.start(audioContext.currentTime);
-                oscillator2.stop(audioContext.currentTime + 0.3);
-            }, 150);
-            
-        } catch (e) {
-            console.log("Web Audio API не поддерживается");
-        }
+            }, 1000);
+        });
     }
 });
