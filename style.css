@@ -1,0 +1,446 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #fff;
+    background-image: url('images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #ff9900;
+    margin-bottom: 40px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #ff9900;
+}
+
+.logo i {
+    margin-right: 10px;
+    font-size: 2.2rem;
+}
+
+.tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ccc;
+    text-align: right;
+}
+
+/* Main content */
+.main-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 2.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ff9900;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(255, 153, 0, 0.5);
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+.call-to-action {
+    background: linear-gradient(90deg, rgba(255,153,0,0.2) 0%, rgba(255,153,0,0.1) 100%);
+    padding: 25px;
+    border-radius: 10px;
+    margin: 30px 0;
+    border-left: 5px solid #ff9900;
+}
+
+.cta-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px 0;
+    color: #ffcc80;
+}
+
+.success-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.stat {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 153, 0, 0.1);
+    border-radius: 10px;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.stat-number {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #ff9900;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Subscription section */
+.subscription-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+    .subscription-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .tagline {
+        margin-top: 10px;
+        text-align: center;
+    }
+}
+
+.subscription-card {
+    background-color: rgba(30, 30, 30, 0.95);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid #ff9900;
+    box-shadow: 0 10px 30px rgba(255, 153, 0, 0.2);
+}
+
+.card-header {
+    background: linear-gradient(90deg, #ff9900 0%, #ff6600 100%);
+    padding: 25px;
+    text-align: center;
+}
+
+.card-header h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.period {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.benefits-list {
+    list-style: none;
+    margin-bottom: 30px;
+}
+
+.benefits-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.benefits-list li:last-child {
+    border-bottom: none;
+}
+
+.benefits-list i {
+    color: #4CAF50;
+    margin-right: 15px;
+    font-size: 1.2rem;
+}
+
+/* Form */
+.subscription-form {
+    margin-top: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #ccc;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #555;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #ff9900;
+    box-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(90deg, #ff9900 0%, #ff6600 100%);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(90deg, #ff6600 0%, #ff3300 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 7px 15px rgba(255, 102, 0, 0.4);
+}
+
+.btn-icon {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.secure-payment {
+    text-align: center;
+    margin-top: 15px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.secure-payment i {
+    margin-right: 5px;
+    color: #4CAF50;
+}
+
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 153, 0, 0.3);
+}
+
+.card-footer i {
+    color: #ff9900;
+    margin-right: 10px;
+}
+
+/* Testimonials */
+.testimonials {
+    background-color: rgba(30, 30, 30, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #444;
+}
+
+.testimonials h3 {
+    color: #ff9900;
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+}
+
+.testimonials h3 i {
+    margin-right: 10px;
+}
+
+.testimonial {
+    background-color: rgba(255, 153, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #ff9900;
+}
+
+.testimonial p {
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.author {
+    color: #ffcc80;
+    font-weight: 500;
+}
+
+/* Error message */
+.error-message {
+    background-color: rgba(30, 0, 0, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    border: 2px solid #ff3333;
+    margin-top: 30px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { border-color: #ff3333; }
+    50% { border-color: #ff6666; }
+    100% { border-color: #ff3333; }
+}
+
+.error-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    color: #ff3333;
+}
+
+.error-header i {
+    font-size: 2.5rem;
+    margin-right: 15px;
+}
+
+.error-header h3 {
+    font-size: 1.8rem;
+}
+
+.error-message p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.try-again-btn {
+    background-color: #ff3333;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.try-again-btn:hover {
+    background-color: #ff6666;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    margin-top: 50px;
+    padding: 30px 0;
+    border-top: 1px solid #444;
+    text-align: center;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.disclaimer {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .cta-text {
+        font-size: 1.1rem;
+    }
+    
+    .price {
+        font-size: 2.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .success-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+}
