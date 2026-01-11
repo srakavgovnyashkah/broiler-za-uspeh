@@ -3,8 +3,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorPanel = document.getElementById('error-panel');
     const retryBtn = document.getElementById('retry-btn');
     
+    // Флаг для отслеживания перенаправления
+    let isRedirecting = false;
+    
     // Обработчик нажатия на кнопку оплаты
-    paymentBtn.addEventListener('click', function() {
+    paymentBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Предотвращаем стандартное поведение
+        
+        if (isRedirecting) return; // Защита от множественных нажатий
+        
+        isRedirecting = true;
+        
         // Показываем состояние загрузки
         const originalHTML = paymentBtn.innerHTML;
         paymentBtn.innerHTML = `
@@ -16,22 +25,37 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         paymentBtn.disabled = true;
         
-        // Имитация обработки платежа
+        // Сначала показываем ошибку 411
         setTimeout(() => {
-            // После загрузки перенаправляем на Wikipedia
-            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+            // Показываем панель ошибки
+            errorPanel.classList.remove('hidden');
             
-            // Также показываем ошибку 411 (на случай если перенаправление не сработает)
-            showError();
-            
-            // Восстанавливаем кнопку (на всякий случай)
+            // Восстанавливаем кнопку
             paymentBtn.innerHTML = originalHTML;
             paymentBtn.disabled = false;
+            
+            // Добавляем эффекты ошибки
+            addErrorEffects();
+            createFloatingNumbers();
+            playErrorSound();
+            
+            // Через 3 секунды после показа ошибки - перенаправляем на Wikipedia
+            setTimeout(() => {
+                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+            }, 3000);
+            
+            isRedirecting = false;
         }, 2000);
     });
     
     // Обработчик кнопки "Попробовать снова"
-    retryBtn.addEventListener('click', function() {
+    retryBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Предотвращаем стандартное поведение
+        
+        if (isRedirecting) return;
+        
+        isRedirecting = true;
+        
         // Показываем загрузку на кнопке повторной попытки
         const originalRetryHTML = retryBtn.innerHTML;
         retryBtn.innerHTML = `
@@ -42,40 +66,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Имитация повторной попытки
         setTimeout(() => {
-            // Перенаправляем на Wikipedia
-            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+            // Снова показываем ошибку
+            errorPanel.classList.remove('hidden');
             
             // Восстанавливаем кнопку
             retryBtn.innerHTML = originalRetryHTML;
             retryBtn.disabled = false;
             
-            // Добавляем анимацию ошибки (на случай если перенаправление не сработает)
+            // Добавляем анимацию ошибки
             addErrorEffects();
-            
-            // Создаём новые плавающие числа
             createFloatingNumbers();
+            playErrorSound();
+            
+            // Через 3 секунды - перенаправляем
+            setTimeout(() => {
+                window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
+            }, 3000);
+            
+            isRedirecting = false;
         }, 1500);
     });
-    
-    // Функция показа ошибки
-    function showError() {
-        // Показываем панель ошибки
-        errorPanel.classList.remove('hidden');
-        
-        // Добавляем эффекты
-        addErrorEffects();
-        
-        // Создаём плавающие числа 411
-        createFloatingNumbers();
-        
-        // Воспроизводим звук ошибки
-        playErrorSound();
-        
-        // Также добавляем перенаправление через 3 секунды
-        setTimeout(() => {
-            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-        }, 3000);
-    }
     
     // Функция добавления эффектов ошибки
     function addErrorEffects() {
@@ -194,26 +204,5 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (e) {
             console.log("Web Audio API не поддерживается");
         }
-    }
-    
-    // Добавляем обработчик нажатия на другие элементы, которые могут вести на оплату
-    document.querySelectorAll('.tg-price-marquee, .tg-payment-card').forEach(element => {
-        element.addEventListener('click', function(e) {
-            if (!e.target.closest('.tg-payment-btn')) {
-                // При клике на цену или карту оплаты тоже перенаправляем на википедию
-                setTimeout(() => {
-                    window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-                }, 1000);
-            }
-        });
-    });
-    
-    // Также можно добавить перенаправление при нажатии на заголовок
-    const titleElement = document.querySelector('.tg-message-title');
-    if (titleElement) {
-        titleElement.style.cursor = 'pointer';
-        titleElement.addEventListener('click', function() {
-            window.location.href = "https://ru.wikipedia.org/wiki/HTTP_411";
-        });
     }
 });
